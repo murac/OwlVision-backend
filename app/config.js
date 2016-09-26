@@ -7,7 +7,7 @@ config.express = {
 }
 
 config.mongodb = {
-    port: process.env.MONGODB_PORT || 41486,
+    port: process.env.MONGODB_PORT || 41536,
     host: process.env.MONGODB_HOST || 'mongodb://owner:mongotest@ds041536.mlab.com:41536/owlvision'
 }
 if (PRODUCTION) {
