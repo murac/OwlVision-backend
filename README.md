@@ -1,6 +1,6 @@
 ## OwlVision
 
-1. `git clone git@gitlab.com:TheLeftovers/CEN4010.git` (set up your SSH keys first! instructions are given by gitlab in that screen)
+1. `git@gitlab.com:TheLeftovers/OwlVision.git` (set up your SSH keys first! instructions are given by gitlab in that screen)
 2. `npm install`
 3. `npm run dev`
 
