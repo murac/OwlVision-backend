@@ -1,4 +1,4 @@
-## OwlVision
+## OwlVision v0.1
 
 1. `git@gitlab.com:TheLeftovers/OwlVision.git` (set up your SSH keys first! instructions are given by gitlab in that screen)
 2. `npm install`
