@@ -1,0 +1,16 @@
+image: node:latest
+
+services:
+  - mongo:3.3
+
+before_script:
+    - apt-get update -y
+    - npm install && npm install -g mocha
+
+test:
+    script:
+        - echo "Build complete"
+
+# deploy:
+  # script:
+      # - npm start

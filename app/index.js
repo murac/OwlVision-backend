@@ -7,6 +7,8 @@ var db = mongoose.connection;
 
 app.set('view engine', 'ejs')
 
+app.use(express.static('public'))
+
 app.use(bodyParser.urlencoded({
     extended: true
 }))
@@ -26,6 +28,41 @@ app.post('/quotes', (req, res) => {
         console.log('saved to database')
         res.redirect('/')
     })
+})
+
+app.put('/quotes', (req, res) => {
+
+//add mongoose code
+
+    // db.collection('quotes')
+    //     .findOneAndUpdate({
+    //         name: 'Yoda'
+    //     }, {
+    //         $set: {
+    //             name: req.body.name,
+    //             quote: req.body.quote
+    //         }
+    //     }, {
+    //         sort: {
+    //             _id: -1
+    //         },
+    //         upsert: true
+    //     }, (err, result) => {
+    //         if (err) return res.send(err)
+    //         res.send(result)
+    //     })
+})
+app.delete('/quotes', (req, res) => {
+
+  //add mongoose code
+
+    // db.collection('quotes').findOneAndDelete({
+    //         name: req.body.name
+    //     },
+    //     (err, result) => {
+    //         if (err) return res.send(500, err)
+    //         res.send('A darth vadar quote got deleted')
+    //     })
 })
 
 // Export the app instance for unit testing via supertest
