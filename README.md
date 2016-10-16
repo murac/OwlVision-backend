@@ -18,10 +18,14 @@
  3. `git push origin branch_name`
 6. Now your branch will be pushed to the repo but will not have merged with the master branch yet. For this, you may either follow the link provided by gitlab in the terminal or just go into gitlab > branches and next to the branch you just updated, there will be a "merge request" button. Click it and submit it. Once it's approved it will be merged to master.
 
-References I used to make this:
+References:
 
 [[1] Building a Simple CRUD Application with Express and MongoDB](https://zellwk.com/blog/crud-express-mongodb/)
 
 [[2] Express Code Structure](https://github.com/focusaurus/express_code_structure)
+
+[[3] Node.js : Building HTML site template using EJS and Layouts](http://lresende.blogspot.com/2015/01/nodejs-building-html-site-template.html)
+
+[[4]ejs-mate](https://www.npmjs.com/package/ejs-mate)
 
 [[**]Markdown Reference](https://gitlab.com/help/user/markdown)
