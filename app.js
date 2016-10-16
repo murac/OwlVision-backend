@@ -1,21 +1,21 @@
-const express = require('express');
-const engine = require('ejs-mate');
-const bodyParser = require('body-parser');
-const path = require('path');
-
+var express = require('express');
+var path = require('path');
 var favicon = require('serve-favicon');
+var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var dotenv = require('dotenv');
+var bodyParser = require('body-parser');
 var session = require('express-session');
+var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
+const engine = require('ejs-mate');
+
+dotenv.load();
 
 var routes = require('./routes/index');
 var user = require('./routes/user');
 
-dotenv.load();
-
-// Configure Passport to use Auth0
+// This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
@@ -30,7 +30,7 @@ var strategy = new Auth0Strategy({
 
 passport.use(strategy);
 
-// This can be used to keep a smaller payload
+// you can use this section to keep a smaller payload
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -41,13 +41,14 @@ passport.deserializeUser(function (user, done) {
 
 const app = express();
 
+// view engine setup
 app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -94,5 +95,5 @@ app.use(function (err, req, res, next) {
     });
 });
 
-// Export the app instance for unit testing via supertest
+
 module.exports = app;
