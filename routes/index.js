@@ -18,10 +18,11 @@ router.get('/', (req, res) => {
 });
 
 // Render the login template
-router.get('/login',
-    function (req, res) {
-        res.render('login', {env: env});
+router.get('/login', (req, res) => {
+    res.render('login', {
+        env: env
     });
+});
 
 // Perform session logout and redirect to homepage
 router.get('/logout', function (req, res) {
@@ -31,7 +32,7 @@ router.get('/logout', function (req, res) {
 
 // Perform the final stage of authentication and redirect to '/user'
 router.get('/callback',
-    passport.authenticate('auth0', {failureRedirect: '/url-if-something-fails'}),
+    passport.authenticate('auth0', {failureRedirect: '/error'}),
     function (req, res) {
         res.redirect(req.session.returnTo || '/user');
     });
