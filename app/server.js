@@ -30,6 +30,9 @@ log.info('server process starting');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
+    //app.route() calls go here
+
+
     app.listen(config.express.port, config.express.ip, (error) => {
         if (error) {
             log.error('Unable to listen for connections', error)
