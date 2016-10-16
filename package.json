@@ -2,12 +2,11 @@
   "name": "owl-vision",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test2": "./bin/test.sh",
-    "dev": "nodemon ./app/server.js | bistre",
-    "start": "./app/server.js | bistre",
+    "dev": "nodemon ./bin/www | bistre",
+    "start": "node ./bin/www",
     "lint": "standard"
   },
   "repository": {
@@ -17,17 +16,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "auth0": "^2.5.0",
     "body-parser": "^1.15.2",
-    "bole": "^3.0.1",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.2.0",
+    "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "ejs-mate": "^2.3.0",
     "express": "^4.14.0",
-    "express-jwt": "^5.1.0",
+    "express-session": "^1.14.1",
     "jquery": "^3.1.1",
     "mongoose": "^4.6.1",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-auth0": "^0.5.2",
     "path": "^0.12.7",
-    "request": "^2.75.0"
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "bistre": "^1.0.1",
