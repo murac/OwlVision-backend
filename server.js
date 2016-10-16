@@ -24,6 +24,7 @@ var log = bole('server');
 
 log.info('server process starting');
 
+
 // Note that there's not much logic in this file.
 // The server should be mostly "glue" code to set things up and
 // then start listening
@@ -31,7 +32,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     //app.route() calls go here
-
 
     app.listen(config.express.port, config.express.ip, (error) => {
         if (error) {
