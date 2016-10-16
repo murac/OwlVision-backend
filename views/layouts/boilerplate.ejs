@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <%- block('head').toString() %>
+    <% include ../partials/head %>
 </head>
 <body>
+
+<% include ../partials/header %>
+
 <section>
     <%- body %>
 </section>
-<%- block('footer').toString() %>
+<% include ../partials/footer %>
 </body>
 </html>
