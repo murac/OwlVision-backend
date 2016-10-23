@@ -134,6 +134,8 @@ function instructor_email_update(req, res) {
 			cheerioReq(url, function (err, $) {
 
 				//code for classes that do not have email information on FAU page
+				//
+				//
 				// email_anchor = $(".dddefault").last().text().split(' ');
 				// email_anchor = email_anchor.filter(v=>v != '' && v != "(P)");
 				// newIns = the_class.instructor;
@@ -186,6 +188,10 @@ function normalize_instructors(req, res) {
 		var potential_middle_name, new_first_name, name_arr;
 		async.eachSeries(classes, function (the_class, callback) {
 			ins = the_class.instructor;
+			//
+			// test code
+			//
+			//
 			// name_arr = ins.name.first.split(' ');
 			// potential_middle_name = name_arr[name_arr.length - 1];
 			// if (potential_middle_name.indexOf('.') != -1) {
@@ -215,6 +221,10 @@ function normalize_instructors(req, res) {
 }
 
 function fix_instructors(req, res) {
+	//
+	// fixing bad code
+	//
+	//
 	// Instructor.ins_without_classes().then(function (instructors) {
 	// 	async.eachSeries(instructors, function (instructor, callback) {
 	// 		Class.findClassByInstructor(instructor._id).then(function (the_class) {
