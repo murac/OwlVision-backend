@@ -128,15 +128,11 @@ function instructor_email_update(req, res) {
 
 	Class.withInstructors().then(function (classes) {
 		classes_with_instructors = classes;
-		// console.log("num structors", classes.length);
 		var url, email_anchor, email_addr, first_name;
 		async.eachSeries(classes, function (the_class, callback) {
-			// console.log('class', the_class);
 			url = first_half + the_class.crn + last_half;
 			cheerioReq(url, function (err, $) {
-				// console.log('len', $(".dddefault").last().length);
 				email_anchor = $(".dddefault").last().children('a');
-				// console.log('%j', email_anchor);
 				if (email_anchor.length > 0) {
 					email_addr = email_anchor.attr('href').replace('mailto:', '');
 					first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
@@ -151,35 +147,12 @@ function instructor_email_update(req, res) {
 					callback();
 				}
 			});
-			// console.log(the_class);
-			// getEmailByCrn(url, the_class);
 		});
 	});
 	res.render('index', {
 		property: 'Value 1',
 		propertiesForPartial: ['One', 'Two'],
 		title: 'It\'s working'
-	});
-}
-
-function getEmailByCrn(url, the_class) {
-	cheerioReq(url, (err, $) => {
-		// email_anchor = $(".dddefault").last().children('a');
-		console.log('len', $(".dddefault").last().length);
-		if (email_anchor.text() !== "") {
-			email_addr = email_anchor.attr('href').replace('mailto:', '');
-			first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
-			the_class.instructor.name.first = first_name;
-			the_class.instructor.email = email_addr;
-			Class.updateInstructorEmail(the_class).then(function (the_class) {
-				// console.log(the_class.instructor.name.last + ', ' + the_class.instructor.name.first + ' email updated to: ' + the_class.instructor.email);
-				console.log(the_class);
-			});
-		} else {
-		}
-		setTimout(function () {
-
-		}, 500);
 	});
 }
 
