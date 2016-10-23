@@ -71,7 +71,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/user', user);
-app.use('/scrape', scrape);
+// don't activate this route. the class db is full
+// app.use('/scrape', scrape);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

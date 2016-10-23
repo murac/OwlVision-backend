@@ -4,6 +4,7 @@ var router = express.Router();
 const cheerioReq = require("cheerio-req");
 var Course = require('../controllers/Course');
 var Class = require('../controllers/Class');
+var Instructor = require('../controllers/Instructor');
 var async = require('async');
 
 var base_url_dept = "https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd";
@@ -127,11 +128,30 @@ function instructor_email_update(req, res) {
 	// });
 
 	Class.withInstructors().then(function (classes) {
-		classes_with_instructors = classes;
-		var url, email_anchor, email_addr, first_name;
+		var url, email_anchor, email_addr, first_name, newIns, last_name_length;
 		async.eachSeries(classes, function (the_class, callback) {
 			url = first_half + the_class.crn + last_half;
 			cheerioReq(url, function (err, $) {
+
+				//code for classes that do not have email information on FAU page
+				// email_anchor = $(".dddefault").last().text().split(' ');
+				// email_anchor = email_anchor.filter(v=>v != '' && v != "(P)");
+				// newIns = the_class.instructor;
+				// last_name_length = newIns.name.last.split(' ').length;
+				// newIns.name.last = email_anchor.splice(email_anchor.length - last_name_length, last_name_length).join(' ');
+				// if (email_anchor.length > 1 && (email_anchor[email_anchor.length - 1].indexOf('.') != -1 || email_anchor[email_anchor.length - 1].length === 1)) {
+				// 	newIns.name.middle = email_anchor.splice(email_anchor.length - 1, 1).join(' ');
+				// }
+				// newIns.name.first = email_anchor.join(' ');
+				// // console.log(newIns);
+				// Instructor.createOrUpdate(newIns, the_class._id).then(function (instructor) {
+				// 	Class.replaceInstructorWithRef(the_class._id, instructor._id);
+				// 	console.log("newInstructor: ", instructor);
+				// 	console.log(the_class.title + " attached to " + instructor.name.last + ", " + instructor.name.first);
+				// 	callback();
+				// });
+
+				//code for classes that have email information on FAU page
 				email_anchor = $(".dddefault").last().children('a');
 				if (email_anchor.length > 0) {
 					email_addr = email_anchor.attr('href').replace('mailto:', '');
@@ -143,12 +163,86 @@ function instructor_email_update(req, res) {
 						callback();
 					});
 				} else {
-					console.log('no email, just name');
-					callback();
+					first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
+					the_class.instructor.name.first = first_name;
+					Class.updateInstructorEmail(the_class).then(function (the_class) {
+						console.log(the_class.instructor.name.last + ', ' + the_class.instructor.name.first + ' name updated');
+						callback();
+					});
 				}
 			});
 		});
 	});
+	res.render('index', {
+		property: 'Value 1',
+		propertiesForPartial: ['One', 'Two'],
+		title: 'It\'s working'
+	});
+}
+
+function normalize_instructors(req, res) {
+	Class.normInstructors().then(function (classes) {
+		var ins;
+		var potential_middle_name, new_first_name, name_arr;
+		async.eachSeries(classes, function (the_class, callback) {
+			ins = the_class.instructor;
+			// name_arr = ins.name.first.split(' ');
+			// potential_middle_name = name_arr[name_arr.length - 1];
+			// if (potential_middle_name.indexOf('.') != -1) {
+			// 	ins.name.middle = potential_middle_name;
+			// 	ins.name.first = name_arr.splice(name_arr.length - 1, 1).join(' ');
+			// 	console.log("new name", ins.name);
+			// }
+			console.log('classId', the_class._id);
+			Instructor.createOrUpdate(ins, the_class._id).then(function (instructor) {
+				console.log('classId', the_class._id);
+				var classId = the_class._id;
+				console.log("instructor", instructor);
+				Class.replaceInstructorWithRef(classId, instructor._id).then(function (retClass) {
+					// console.log("New Instructor: ", instructor);
+					console.log(retClass.title + ' attached to instructor: ' + retClass.instructor);
+					callback();
+				});
+			});
+			// callback();
+		});
+	});
+	res.render('index', {
+		property: 'Value 1',
+		propertiesForPartial: ['One', 'Two'],
+		title: 'It\'s working'
+	});
+}
+
+function fix_instructors(req, res) {
+	// Instructor.ins_without_classes().then(function (instructors) {
+	// 	async.eachSeries(instructors, function (instructor, callback) {
+	// 		Class.findClassByInstructor(instructor._id).then(function (the_class) {
+	// 			Instructor.attachClassToInstructor(instructor._id, the_class._id).then(function (ins) {
+	// 				if (ins.name.first && ins.name.last && ins.classes) {
+	// 					console.log(ins.name.last + ", " + ins.name.first + " teaches " + ins.classes.length + " classes");
+	// 				}
+	// 				else console.log(ins);
+	// 				callback();
+	// 			});
+	// 		});
+	// 	});
+	// });
+	Class.allClasses().then(function (classes) {
+		console.log("number of classes", classes.length);
+		async.eachSeries(classes, function (the_class, callback) {
+			Instructor.findInstructorById(the_class.instructor).then(function (instructor) {
+				Instructor.attachClassToInstructor(instructor._id, the_class._id).then(function (ins) {
+					if (ins.not_good) {
+						console.log(ins.not_good);
+					}
+					else console.log(ins.name.last + ", " + ins.name.first + " teaches " + ins.classes.length + " classes");
+					callback();
+				});
+			});
+		});
+	});
+
 	res.render('index', {
 		property: 'Value 1',
 		propertiesForPartial: ['One', 'Two'],
@@ -254,7 +348,9 @@ var departments = [
 	{WST: "Women, Gender and Sexuality"}
 ];
 
-router.get('/', scrape);
-router.get('/ins', instructor_email_update);
+// router.get('/', scrape);
+// router.get('/ins', instructor_email_update);
+// router.get('/ins/norm', normalize_instructors);
+// router.get('/ins/fix', fix_instructors);
 
 module.exports = router;
