@@ -24,7 +24,7 @@ function insert(classObj, courseId) {
 }
 
 function all_classes_with_instruction() {
-	var class_query = Class.find({"instructor": {$ne: null}}).exec();
+	var class_query = Class.find({"instructor.name.last": {$ne: null}, "instructor.email": {$exists: false}}).exec();
 	return class_query.then(function (classes) {
 		return classes;
 	}).catch(function (err) {

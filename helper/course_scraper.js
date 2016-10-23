@@ -128,14 +128,15 @@ function instructor_email_update(req, res) {
 
 	Class.withInstructors().then(function (classes) {
 		classes_with_instructors = classes;
-		console.log("num structors", classes.length);
+		// console.log("num structors", classes.length);
 		var url, email_anchor, email_addr, first_name;
-		async.eachSeries(classes,function (the_class,callback) {
-			// console.log('crn', the_class.crn);
+		async.eachSeries(classes, function (the_class, callback) {
+			// console.log('class', the_class);
 			url = first_half + the_class.crn + last_half;
 			cheerioReq(url, function (err, $) {
 				// console.log('len', $(".dddefault").last().length);
 				email_anchor = $(".dddefault").last().children('a');
+				// console.log('%j', email_anchor);
 				if (email_anchor.length > 0) {
 					email_addr = email_anchor.attr('href').replace('mailto:', '');
 					first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
@@ -146,6 +147,7 @@ function instructor_email_update(req, res) {
 						callback();
 					});
 				} else {
+					console.log('no email, just name');
 					callback();
 				}
 			});
