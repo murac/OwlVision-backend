@@ -16,6 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.1.2",
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
     "cheerio-req": "^1.1.2",

@@ -16,7 +16,10 @@ var ClassSchema = new Schema({
 		room: String
 	},
 	instructor: {
-		name: String,
+		name: {
+			first: String,
+			last: String
+		},
 		email: String
 	},
 	updated_at: {type: Date, default: Date.now}

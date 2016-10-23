@@ -2,6 +2,9 @@ var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 const cheerioReq = require("cheerio-req");
+var Course = require('../controllers/Course');
+var Class = require('../controllers/Class');
+var async = require('async');
 
 var base_url_dept = "https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd";
 var base_url_disp = "https://banner.fau.edu/FAUPdad/bwckctlg.p_display_courses";
@@ -47,17 +50,92 @@ function scrape(req, res) {
 		var result = [];
 		crns.each(function (i, el) {
 			// this === el
-			var tds = $(this).children('td');
-			result.push(tds.text());
+			var classObj = initClassObj();
+			var tds = $(this).children('.dddefault');
+			tds.each(function (k, el) {
+				cur = $(this);
+				switch (k) {
+					case 1:
+						if (cur.children().text() != '') classObj.class.crn = cur.children().text();
+						break;
+					case 2:
+						item = cur.text();
+						if (item != '') {
+							item = item.split(' ');
+							classObj.course.course_id.subject = item[0];
+							classObj.course.course_id.number = item[1];
+						}
+						break;
+					case 3:
+						var section = cur.text();
+						if (section != '') classObj.class.section = cur.text();
+						break;
+					case 5:
+						var title = cur.text();
+						if (title != '') classObj.class.title = cur.text();
+						break;
+					case 9:
+						if (cur.text() != '') classObj.class.location.campus = cur.text();
+						break;
+					case 10:
+						classObj.class.days = cur.text().split(' ').filter(v=>v != '');
+						break;
+					case 11:
+						if (cur.text() != '') classObj.class.time.start = cur.text();
+						break;
+					case 12:
+						if (cur.text() != '') classObj.class.time.end = cur.text();
+						break;
+					case 14:
+						if (cur.text() != '') classObj.class.location.building = cur.text();
+						break;
+					case 15:
+						if (cur.text() != '') classObj.class.location.room = cur.text();
+						break;
+					case 20:
+						if (cur.text() != '') classObj.class.instructor.name.last = cur.text();
+						break;
+				}
+			});
+			if (Object.keys(classObj.course.course_id).length !== 0) {
+				// console.log(classObj);
+				result.push(classObj);
+			}
 			// result.push({crn: $(this).text(), course: $(this).parent().parent().next().text()});
 		}).get().join(', ');
 		console.log(result);
+		async.eachSeries(result, function (o, callback) {
+			console.log(o);
+			Course.insert(o.course).then(function (course) {
+				Class.insert(o.class, course._id).then(function (newClass) {
+					// console.log(newClass);
+					Course.attach(course._id, newClass._id).then(function () {
+						callback();
+					});
+				});
+			});
+		});
 	});
 	res.render('index', {
 		property: 'Value 1',
 		propertiesForPartial: ['One', 'Two'],
 		title: 'It\'s working'
 	});
+}
+
+function initClassObj() {
+	return {
+		class: {
+			location: {},
+			time: {},
+			instructor: {
+				name: {}
+			}
+		},
+		course: {
+			course_id: {}
+		}
+	};
 }
 
 var subjects = [

@@ -5,7 +5,8 @@ var CourseSchema = new Schema({
 		subject: String,
 		number: String
 	},
-	classes:[{type: Schema.Types.ObjectId, ref: 'Class'}],
+	classes: [{type: Schema.Types.ObjectId, ref: 'Class'}],
 	updated_at: {type: Date, default: Date.now}
 });
+
 module.exports = mongoose.model('Course', CourseSchema);
