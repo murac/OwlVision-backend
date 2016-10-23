@@ -1,0 +1,1019 @@
+@import "https://fonts.googleapis.com/css?family=Roboto";
+.centeraligntext {
+    text-align: center;
+}
+.leftaligntext {
+    text-align: left;
+}
+.rightaligntext {
+    text-align: right;
+}
+.menulisttext {
+    list-style: none outside none;
+}
+.captiontext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: left;
+}
+.skiplinks {
+    display: none;
+}
+.pageheaderlinks {
+    color: #FFFFFF;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+}
+.pageheaderlinks2 {
+    color: #CED5EA;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    text-align: justify;
+}
+.pagebodylinks {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+}
+.gotoanchorlinks {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.pagefooterlinks {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 3px;
+    text-align: center;
+}
+.backlinktext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 5px;
+    text-align: right;
+}
+.menuheadertext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.menulinktext {
+    color: #0F2167;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+.menulinkdesctext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 70%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.normaltext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.infotext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.errortext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+}
+.warningtext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+}
+.multipagemsgtext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.releasetext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+}
+.requiredmsgtext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 70%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.fieldlabeltext {
+    color: #000000;
+    font-style: normal;
+    text-align: left;
+}
+.fieldlabeltextinvisible {
+    display: none;
+}
+.fieldrequiredtext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.fieldformattext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 70%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.fielderrortext {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 70%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+A:link {
+    color: #0000FF;
+    text-decoration: none;
+}
+A:visited {
+    color: #660099;
+    text-decoration: none;
+}
+A:active {
+    color: #990000;
+}
+A:hover {
+    color: #990000;
+    text-decoration: underline;
+}
+A.menulinktext {
+    color: #0000FF;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+}
+A.submenulinktext {
+    color: #0000FF;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: none;
+}
+A.submenulinktext:hover {
+    background-color: #1E2B83;
+    color: #FFFFFF;
+    font-family: verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: justify;
+    text-decoration: none;
+    text-transform: none;
+}
+A.submenulinktext:visited {
+    color: #660099;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: none;
+}
+A.submenulinktext:visited:hover {
+    background-color: #1E2B83;
+    color: #FFFFFF;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: justify;
+    text-decoration: none;
+    text-transform: none;
+}
+A.submenulinktext2 {
+    color: #0000FF;
+    font-size: 100%;
+    font-weight: normal;
+    text-decoration: none;
+}
+A.submenulinktext2:hover {
+    color: #990000;
+    font-size: 100%;
+    font-weight: normal;
+    text-decoration: underline;
+}
+A.submenulinktext2:visited {
+    color: #660099;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+A.submenulinktext2:visited:hover {
+    color: #990000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-weight: normal;
+    text-decoration: underline;
+}
+BODY {
+    background-color: #FFFFFF;
+    background-image: url("/wtlgifs/web_bg_app.jpg");
+    background-repeat: no-repeat;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-style: normal;
+    margin-left: 1%;
+    margin-right: 2%;
+    margin-top: 0;
+    text-align: left;
+}
+BODY.campuspipeline {
+    background-color: #FFFFFF;
+    background-image: none;
+    background-repeat: no-repeat;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-style: normal;
+    margin-left: 1%;
+    margin-top: 6px;
+    text-align: left;
+}
+BODY.previewbody {
+    background-color: #FFFFFF;
+    background-image: none;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: left;
+}
+BODY.validationbody {
+    background-color: #FFFFFF;
+    background-image: none;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 1%;
+    margin-right: 2%;
+    text-align: left;
+}
+DIV.menulistdiv {
+    text-align: left;
+}
+DIV.headerwrapperdiv {
+    margin-left: 0;
+    margin-top: 0;
+}
+DIV.pageheaderdiv1 {
+    border-color: -moz-use-text-color;
+    border-style: solid;
+    border-width: 0;
+    margin-left: 0;
+    margin-top: 8%;
+    text-align: left;
+}
+DIV.pageheaderdiv2 {
+    display: none;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+DIV.headerlinksdiv {
+    margin-right: 0;
+    margin-top: 2px;
+    text-align: left;
+}
+DIV.headerlinksdiv2 {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    text-transform: none;
+}
+DIV.bodylinksdiv {
+    margin-top: 1%;
+    text-align: center;
+}
+DIV.footerlinksdiv {
+    text-align: center;
+}
+DIV.backlinkdiv {
+    margin-top: -40px;
+    text-align: right;
+}
+DIV.pagetitlediv {
+    text-align: left;
+}
+DIV.infotextdiv {
+    text-align: left;
+}
+DIV.pagebodydiv {
+    text-align: left;
+}
+DIV.pagefooterdiv {
+    border: 0 none;
+    float: left;
+    margin-top: 0;
+    text-align: left;
+}
+DIV.poweredbydiv {
+    border-color: -moz-use-text-color;
+    border-style: solid;
+    border-width: 0;
+    float: right;
+    margin-right: -1px;
+    margin-top: 0;
+    text-align: right;
+}
+DIV.previewdiv {
+    text-align: center;
+}
+DIV.validationdiv {
+    text-align: center;
+}
+DIV.staticheaders {
+    font-size: 90%;
+    text-align: right;
+}
+H1 {
+    color: #FFFFFF;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 0;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 0;
+}
+H2 {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+HR {
+    color: #CCCC33;
+    height: 2px;
+    margin-top: -10px;
+    text-align: left;
+    vertical-align: top;
+}
+HR.pageseprator {
+    color: #003366;
+    text-align: left;
+    vertical-align: top;
+}
+INPUT {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+}
+TEXTAREA {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+}
+SELECT {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+}
+TABLE.dataentrytable {
+    border-color: -moz-use-text-color;
+    border-style: solid;
+    border-width: 0;
+}
+TABLE.datadisplaytable {
+    border-color: -moz-use-text-color;
+    border-style: solid;
+    border-width: 0;
+}
+TABLE.plaintable {
+    border-color: -moz-use-text-color;
+    border-style: solid;
+    border-width: 0;
+}
+TABLE.menuplaintable {
+}
+TABLE.pageheadertable {
+    margin-top: 0;
+}
+TABLE.colorsampletable {
+    background-color: #FFFFFF;
+}
+TABLE TH {
+    color: #000000;
+    vertical-align: top;
+}
+TABLE TD {
+    color: #000000;
+    vertical-align: top;
+}
+.pageheadertablecell {
+    text-align: left;
+}
+.pageheadernavlinkstablecell {
+    text-align: right;
+}
+TABLE TD.deheader {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.deheader {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.detitle {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    padding-bottom: 1em;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.detitle {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    padding-bottom: 1em;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.delabel {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.delabel {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.deseparator {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dehighlight {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dedead {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dedefault {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dewhite {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddheader {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.ddheader {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddtitle {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    padding-bottom: 1em;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.ddtitle {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    padding-bottom: 1em;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddlabel {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.ddlabel {
+    background-color: #E3E5EE;
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddseparator {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddhighlight {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dddead {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.dddefault {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddnontabular {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.ddwhite {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.pltitle {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+TABLE TD.plheader {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+TABLE TH.pllabel {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+TABLE TD.plseparator {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: normal;
+}
+TABLE TD.plhighlight {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: normal;
+}
+TABLE TD.pldead {
+    font-weight: normal;
+}
+TABLE TD.pldefault {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: normal;
+}
+TABLE TD.plwhite {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-weight: normal;
+}
+TABLE TD.plheadermenulinks {
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 100%;
+    font-weight: normal;
+}
+TABLE TD.mptitle {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.mpheader {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TH.mplabel {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.mpwhite {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.mpdefault {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+TABLE TD.indefault {
+    color: #000000;
+    font-family: Verdana,Arial Narrow,helvetica,sans-serif;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+body {
+    background-image: url("https://www.fau.edu/_resources/selfservice/images/self-service-header.jpg");
+    background-repeat: no-repeat;
+    font-family: 'Roboto',sans-serif;
+    font-size: 16px;
+    margin-top: 64px;
+}
+.mpdefault A.submenulinktext2,.infotext, TABLE TD.pldefault, h2, .tabon, .taboff, .bgtabon, .bgtaboff, .texttabon, .texttaboff, TABLE TD.mpdefault {
+    font-family: 'Roboto',sans-serif;
+    font-size: 16px !important;
+}
+.bgtabon {
+    background-color: #003366;
+}
+.bgtaboff {
+    background-color: #CCCCCC;
+}
+.texttabon {
+    color: #FFFFFF;
+}
+.texttaboff {
+    color: #000000;
+}
+.tabon {
+    background-color: #003366;
+    background-image: url("/wtlgifs/web_tab_corner.gif");
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 8px;
+}
+.tabon A:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.tabon A:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.tabon A:active {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.tabon A:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.taboff {
+    background-color: #E5E4E4;
+    background-image: url("/wtlgifs/web_tab_corner.gif");
+    background-repeat: no-repeat;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 8px;
+}
+.taboff A:link {
+    color: #000000;
+    text-decoration: none;
+}
+.taboff A:visited {
+    color: #000000;
+    text-decoration: none;
+}
+.taboff A:active {
+    color: #000000;
+    text-decoration: none;
+}
+.taboff A:hover {
+    color: #000000;
+    text-decoration: none;
+}
+.bg3 {
+    background-color: #CCCC00;
+}
+.bgtaboff .headerImg, .bgtabon .headerImg {
+    display: none;
+}
+.tabon {
+    background-image: none;
+    border-bottom: 3px solid #CC0000;
+    padding: 10px;
+}
+.bgtabon, .bgtaboff {
+    background-color: #FFFFFF;
+    padding-right: 3px;
+}
+.taboff {
+    background-image: none;
+    padding: 10px;
+}
+.tabdisable {
+    display: none;
+}
+.taboff A:link {
+    color: #666666;
+}
+INPUT[type="submit"] {
+    background-color: #003366;
+    border: 1px solid #CCCCCC;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+DIV.headerlinksdiv2, span.pageheaderlinks {
+    font-size: 14px;
+    padding-top: 10px;
+}
+H2 {
+    background-image: url("http://www.fau.edu/honors/images/dot_rule.png");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    font-size: 26px !important;
+    padding-bottom: 6px;
+}
+.bg3 {
+    display: none;
+}
+.mpdefault A.submenulinktext2 {
+    color: #003366;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.mpdefault A.submenulinktext2:hover {
+    color: #CC0000;
+    font-weight: bold;
+}
+table.menuplaintable {
+    width: 100%;
+}
+table.menuplaintable tbody tr {
+    background-color: #E5E4E4;
+    float: left;
+    margin: 5px;
+    min-height: 151px;
+    min-width: 130px;
+    padding: 5px;
+    width: 17%;
+}
+table.bordertable, table.bordertable tr td, table.datadisplaytable, table.datadisplaytable tr td, table.dataentrytable, table.dataentrytable tr td {
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+HR {
+    margin-top: 0;
+}
+DIV.pageheaderdiv1 {
+    margin-top: 4%;
+}
+.menulinkdesctext {
+    font-size: 90%;
+}
+.infotext {
+    font-size: 100%;
+}
+@media (max-width: 680px) {
+table.menuplaintable tbody tr {
+    min-height: 44px;
+    width: 95%;
+}
+.tabon {
+    background-image: none;
+    border-bottom: 3px solid #CC0000;
+    display: block;
+    float: left;
+    padding: 10px;
+    width: 95%;
+}
+.bgtabon, .bgtaboff {
+    display: none;
+}
+.taboff {
+    background-image: none;
+    display: block;
+    float: left;
+    padding: 10px;
+    width: 95%;
+}
+TABLE TD.pldefault {
+    display: block;
+    width: 95%;
+}
+}
+body > div.pagebodydiv > table.plaintable > tbody > tr > td.pldefault > a, a.whitespacelink {
+    background-color: #003366;
+    border: 2px solid #CC0000;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+a.whitespacelink {
+    display: block;
+    margin-top: 15px;
+    width: 150px;
+}
+div.pagebodydiv br {
+    display: none;
+}
+.plaintable {
+    margin-top: 10px;
+}

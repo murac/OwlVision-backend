@@ -9,11 +9,13 @@ var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 const engine = require('ejs-mate');
+var mongoose = require('mongoose');
 
 dotenv.load();
 
 var routes = require('./routes/index');
 var user = require('./routes/user');
+var scrape = require('./helper/course_scraper');
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
@@ -41,6 +43,8 @@ passport.deserializeUser(function (user, done) {
 
 const app = express();
 
+mongoose.Promise = require('bluebird');
+
 // view engine setup
 app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
@@ -67,6 +71,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/user', user);
+// don't activate this route. the class db is full
+// app.use('/scrape', scrape);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
