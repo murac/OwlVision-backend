@@ -15,13 +15,8 @@ var ClassSchema = new Schema({
 		building: String,
 		room: String
 	},
-	instructor: {
-		name: {
-			first: String,
-			last: String
-		},
-		email: String
-	},
+	ins: {type: Schema.Types.ObjectId, ref: 'Instructor'},
+	instructor: Schema.Types.Mixed,
 	updated_at: {type: Date, default: Date.now}
 });
 module.exports = mongoose.model('Class', ClassSchema);

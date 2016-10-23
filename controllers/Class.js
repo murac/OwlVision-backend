@@ -23,8 +23,20 @@ function insert(classObj, courseId) {
 	});
 }
 
-function all_classes_with_instruction() {
+function withInstructors() {
 	var class_query = Class.find({"instructor.name.last": {$ne: null}, "instructor.email": {$exists: false}}).exec();
+	return class_query.then(function (classes) {
+		return classes;
+	}).catch(function (err) {
+		throw err;
+	});
+}
+
+function normInstructors() {
+	var class_query = Class.find({
+		"instructor.name.last": {$ne: null},
+		"instructor.name.first": {$exists: true}
+	}).exec();
 	return class_query.then(function (classes) {
 		return classes;
 	}).catch(function (err) {
@@ -40,6 +52,48 @@ function updateInstructorEmail(the_class) {
 		return result[0].save();
 	});
 }
+
+function replaceInstructorWithRef(classId, insId) {
+	return Class.findOneAndUpdate({_id: classId}, {$set: {instructor: insId}}, {new: true}).exec().then(function (doc) {
+		return doc;
+	}).catch(function (error) {
+		throw error;
+	});
+}
+
+function findClassByInstructor(classId) {
+	var class_query = Class.find({"instructor": classId}).exec();
+	return class_query.then(function (the_class) {
+		return the_class;
+	}).catch(function (error) {
+		throw error;
+	});
+}
+
+function allClasses() {
+	var class_query = Class.find({}).exec();
+	return class_query.then(function (classes) {
+		return classes;
+	}).catch(function (error) {
+		throw error;
+	});
+}
+
+function findClassByCrn(crn) {
+	var class_query = Class.find({"crn": crn}).exec();
+	return class_query.then(function (the_class) {
+		return the_class;
+	}).catch(function (error) {
+		throw error;
+	});
+}
+
+
 exports.insert = insert;
-exports.withInstructors = all_classes_with_instruction;
+exports.withInstructors = withInstructors;
+exports.normInstructors = normInstructors;
 exports.updateInstructorEmail = updateInstructorEmail;
+exports.replaceInstructorWithRef = replaceInstructorWithRef;
+exports.findClassByInstructor = findClassByInstructor;
+exports.allClasses = allClasses;
+exports.findClassByCrn = findClassByCrn;
