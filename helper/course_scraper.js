@@ -32,21 +32,10 @@ var options_disp = [
 ];
 
 function scrape(req, res) {
-	console.log("hi");
-	// cheerioReq("https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd?pv_source=&pv_dept=ANTH&pv_term=201701&pv_campus=01&pv_college=&pv_level=&pv_crsno=6084&pv_section=001", (err, $) => {
-	// 	var crns = $("html u");
-	// 	var result = [];
-	// 	crns.each(function (i, el) {
-	// 		// this === el
-	// 		result.push({crn: $(this).text(), course: $(this).parent().parent().next().text()});
-	// 	}).get().join(', ');
-	// 	console.log(result);
-	// });
-	cheerioReq("https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd?pv_source=&pv_dept=CMST&pv_term=201701", (err, $) => {
+	var basic = "https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd?pv_source=&pv_dept=CMST&pv_term=201701";
+	cheerioReq(base_master, (err, $) => {
 		if (err)console.log("error: ", err);
-		// var crns = $(".datadisplaytable")['1'].children[1].children;
 		var crns = $(".datadisplaytable").last().children('tr');
-		// console.log(crns['1']);
 		var result = [];
 		crns.each(function (i, el) {
 			// this === el
@@ -59,41 +48,39 @@ function scrape(req, res) {
 						if (cur.children().text() != '') classObj.class.crn = cur.children().text();
 						break;
 					case 2:
-						item = cur.text();
-						if (item != '') {
+						item = cur.text().trim();
+						if (item !== "") {
 							item = item.split(' ');
 							classObj.course.course_id.subject = item[0];
 							classObj.course.course_id.number = item[1];
 						}
 						break;
 					case 3:
-						var section = cur.text();
-						if (section != '') classObj.class.section = cur.text();
+						if (cur.text().trim() !== "") classObj.class.section = cur.text().trim();
 						break;
 					case 5:
-						var title = cur.text();
-						if (title != '') classObj.class.title = cur.text();
+						if (cur.text().trim() !== "") classObj.class.title = cur.text().trim();
 						break;
 					case 9:
-						if (cur.text() != '') classObj.class.location.campus = cur.text();
+						if (cur.text().trim() !== "") classObj.class.location.campus = cur.text().trim();
 						break;
 					case 10:
-						classObj.class.days = cur.text().split(' ').filter(v=>v != '');
+						classObj.class.days = cur.text().trim().split(' ').filter(v=>v !== "");
 						break;
 					case 11:
-						if (cur.text() != '') classObj.class.time.start = cur.text();
+						if (cur.text().trim() !== "") classObj.class.time.start = cur.text().trim();
 						break;
 					case 12:
-						if (cur.text() != '') classObj.class.time.end = cur.text();
+						if (cur.text().trim() !== "") classObj.class.time.end = cur.text().trim();
 						break;
 					case 14:
-						if (cur.text() != '') classObj.class.location.building = cur.text();
+						if (cur.text().trim() !== "") classObj.class.location.building = cur.text().trim();
 						break;
 					case 15:
-						if (cur.text() != '') classObj.class.location.room = cur.text();
+						if (cur.text().trim() !== "") classObj.class.location.room = cur.text().trim();
 						break;
 					case 20:
-						if (cur.text() != '') classObj.class.instructor.name.last = cur.text();
+						if (cur.text().trim() !== "") classObj.class.instructor.name.last = cur.text().trim();
 						break;
 				}
 			});
@@ -103,13 +90,12 @@ function scrape(req, res) {
 			}
 			// result.push({crn: $(this).text(), course: $(this).parent().parent().next().text()});
 		}).get().join(', ');
-		console.log(result);
+		// console.log(result);
 		async.eachSeries(result, function (o, callback) {
-			console.log(o);
 			Course.insert(o.course).then(function (course) {
 				Class.insert(o.class, course._id).then(function (newClass) {
-					// console.log(newClass);
 					Course.attach(course._id, newClass._id).then(function () {
+						console.log(newClass.title + ' added to course: ' + course.course_id.subject + ' ' + course.course_id.number);
 						callback();
 					});
 				});
@@ -120,6 +106,78 @@ function scrape(req, res) {
 		property: 'Value 1',
 		propertiesForPartial: ['One', 'Two'],
 		title: 'It\'s working'
+	});
+}
+
+function instructor_email_update(req, res) {
+	var first_half = "https://banner.fau.edu/FAUPdad/lwskdsch.p_dept_schd?pv_source=&pv_dept=&pv_term=201701&pv_sub=&pv_pterm=1&pv_crn=";
+	var last_half = "&pv_campus=&pv_college=&pv_level=&pv_crsno=&pv_section=";
+
+	// var url = first_half + "33087" + last_half;
+	// cheerioReq(url, (err, $) => {
+	// 	if (err)console.log("error: ", err);
+	// 	// var email = $('a[href^="mailto:"]');
+	// 	// console.log(url);
+	// 	console.log('len', $(".dddefault").last().length);
+	// 	var email_anchor = $(".dddefault").last().children('a');
+	// 	if (email_anchor.text() === "") console.log("empty");
+	// 	// var email_addr = email_anchor.attr('href').replace('mailto:', '');
+	// 	// var first_name = email_anchor.attr('target').replace('Claiborne', '').trim();
+	// 	// console.log(email_addr);
+	// });
+
+	Class.withInstructors().then(function (classes) {
+		classes_with_instructors = classes;
+		console.log("num structors", classes.length);
+		var url, email_anchor, email_addr, first_name;
+		async.eachSeries(classes,function (the_class,callback) {
+			// console.log('crn', the_class.crn);
+			url = first_half + the_class.crn + last_half;
+			cheerioReq(url, function (err, $) {
+				// console.log('len', $(".dddefault").last().length);
+				email_anchor = $(".dddefault").last().children('a');
+				if (email_anchor.length > 0) {
+					email_addr = email_anchor.attr('href').replace('mailto:', '');
+					first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
+					the_class.instructor.name.first = first_name;
+					the_class.instructor.email = email_addr;
+					Class.updateInstructorEmail(the_class).then(function (the_class) {
+						console.log(the_class.instructor.name.last + ', ' + the_class.instructor.name.first + ' email updated to: ' + the_class.instructor.email);
+						callback();
+					});
+				} else {
+					callback();
+				}
+			});
+			// console.log(the_class);
+			// getEmailByCrn(url, the_class);
+		});
+	});
+	res.render('index', {
+		property: 'Value 1',
+		propertiesForPartial: ['One', 'Two'],
+		title: 'It\'s working'
+	});
+}
+
+function getEmailByCrn(url, the_class) {
+	cheerioReq(url, (err, $) => {
+		// email_anchor = $(".dddefault").last().children('a');
+		console.log('len', $(".dddefault").last().length);
+		if (email_anchor.text() !== "") {
+			email_addr = email_anchor.attr('href').replace('mailto:', '');
+			first_name = email_anchor.attr('target').replace(the_class.instructor.name.last, '').trim();
+			the_class.instructor.name.first = first_name;
+			the_class.instructor.email = email_addr;
+			Class.updateInstructorEmail(the_class).then(function (the_class) {
+				// console.log(the_class.instructor.name.last + ', ' + the_class.instructor.name.first + ' email updated to: ' + the_class.instructor.email);
+				console.log(the_class);
+			});
+		} else {
+		}
+		setTimout(function () {
+
+		}, 500);
 	});
 }
 
@@ -222,5 +280,6 @@ var departments = [
 ];
 
 router.get('/', scrape);
+router.get('/ins', instructor_email_update);
 
 module.exports = router;
