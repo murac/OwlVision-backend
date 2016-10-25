@@ -1,9 +1,5 @@
 image: node:argon
 
-stages:
-  - build
-  - clean_up
-
 staging:
     type: deploy
         - apt-get update -yq
@@ -12,9 +8,3 @@ staging:
         - dpl --provider=heroku --app=owlvision --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
   only:
     - master
-
-clean_up_job:
-  stage: clean_up
-  script:
-    - rm -rf node_modules
-  when: on_failure
