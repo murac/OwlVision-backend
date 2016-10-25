@@ -88,7 +88,6 @@ function findClassByCrn(crn) {
 	});
 }
 
-
 exports.insert = insert;
 exports.withInstructors = withInstructors;
 exports.normInstructors = normInstructors;

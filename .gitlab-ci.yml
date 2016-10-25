@@ -1,16 +1,21 @@
-image: node:latest
+image: node:argon
 
-services:
-  - mongo:3.3
+stages:
+  - build
+  - clean_up
 
-before_script:
-    - apt-get update -y
-    - npm install
+build_and_deploy_prod:
+  stage: build
+  script:
+    - apt-get update -yq
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=owlvision --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
+  only:
+    - master
 
-test:
-    script:
-        - echo "Build complete"
-
-# deploy:
-  # script:
-      # - npm start
+clean_up_job:
+  stage: clean_up
+  script:
+    - rm -rf node_modules
+  when: on_failure
