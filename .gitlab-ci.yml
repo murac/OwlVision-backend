@@ -8,7 +8,7 @@ staging:
     type: deploy
     script:
         - apt-get update -yq
-        - apt-get install -y ruby-dev
+        - apt-get install -yqq ruby ruby-dev
         - gem install dpl
         - dpl --provider=heroku --api-key=`heroku auth:token`
     only:
