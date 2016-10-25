@@ -4,9 +4,9 @@ before_script:
     - apt-get update -yq
     - npm install
 
-test:
-    script:
-        - echo "Build complete"
+#test:
+#    script:
+#        - echo "Build complete"
 
 staging:
     type: deploy
