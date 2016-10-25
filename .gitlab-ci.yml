@@ -4,13 +4,12 @@ stages:
   - build
   - clean_up
 
-build_and_deploy_prod:
-  stage: build
-  script:
-    - apt-get update -yq
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=owlvision --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
+staging:
+    type: deploy
+        - apt-get update -yq
+        - apt-get install -y ruby-dev
+        - gem install dpl
+        - dpl --provider=heroku --app=owlvision --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
   only:
     - master
 
