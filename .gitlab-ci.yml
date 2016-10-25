@@ -4,12 +4,16 @@ before_script:
     - apt-get update -yq
     - npm install
 
+test:
+    script:
+        - echo "Build complete"
+
 staging:
     type: deploy
     script:
         - apt-get update -yq
         - apt-get install -yqq ruby ruby-dev
         - gem install dpl
-        - dpl --provider=heroku --api-key=`heroku auth:token`
+        - dpl --provider=heroku --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
     only:
     - master
