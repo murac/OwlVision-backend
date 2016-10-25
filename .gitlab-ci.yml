@@ -14,6 +14,6 @@ staging:
         - apt-get update -yq
         - apt-get install -yqq ruby ruby-dev
         - gem install dpl
-        - dpl --provider=heroku --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
+        - dpl --provider=heroku --app=owlvision --api-key=d84226a5-ab28-4136-98e9-543d87cf6f1b
     only:
     - master
