@@ -1,16 +1,15 @@
 image: node:latest
 
-services:
-  - mongo:3.3
-
 before_script:
-    - apt-get update -y
+    - apt-get update -yq
     - npm install
 
-test:
+staging:
+    type: deploy
     script:
-        - echo "Build complete"
-
-# deploy:
-  # script:
-      # - npm start
+        - apt-get update -yq
+        - apt-get install -y ruby-dev
+        - gem install dpl
+        - dpl --provider=heroku --api-key=`heroku auth:token`
+    only:
+    - master
