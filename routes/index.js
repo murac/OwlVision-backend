@@ -1,13 +1,13 @@
 // routes/index.js
-var express = require('express');
-var passport = require('passport');
-var router = express.Router();
+let express = require('express');
+let passport = require('passport');
+let router = express.Router();
 
 
-var development = process.env.NODE_ENV !== 'production';
-var callbackURL = development ? 'http://localhost:3000/callback' : process.env.AUTH0_CALLBACK_URL;
+let development = process.env.NODE_ENV !== 'production';
+let callbackURL = development ? 'http://localhost:3000/callback' : process.env.AUTH0_CALLBACK_URL;
 
-var env = {
+let env = {
 	AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
 	AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
 	AUTH0_CALLBACK_URL: callbackURL
